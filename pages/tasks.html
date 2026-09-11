@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks | ASE - Portal</title>
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <link rel="stylesheet" href="../css/modals.css">
+    <link rel="stylesheet" href="../css/tasks.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <div id="navbar-placeholder"></div>
+    <main>
+        <div class="title">
+            <h1>Tasks</h1>
+        </div>
+        <div class="cards-cont">
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/stack.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="t_tasks_count">20</h2>
+                    <p class="tagline">Total Tasks</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/pending.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="p_tasks_count">20</h2>
+                    <p class="tagline">Pending Tasks</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/process.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="inp_tasks_count">20</h2>
+                    <p class="tagline">In Process Tasks</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/overdued.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="dd_tasks_count">20</h2>
+                    <p class="tagline">Overdued Tasks</p>
+                </div>
+            </div>
+        </div>
+        <div class="rem-tasks">
+            <div class="form-head">
+                <h3>Filters</h3>
+                <button type="button" onclick="window.location.reload()">Reset </button>
+            </div>
+            <form>
+                <div class="input-cont">
+                    <label for="fbyEmpName">Employee Name</label>
+                    <input type="text" name="fbyEmpName" id="fbyEmpName">
+                </div>
+                <div class="input-cont">
+                    <label for="fbyPriority">Priority</label>
+                    <select name="fbyPriority" id="fbyPriority">
+                        <option value="">All</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="input-cont">
+                    <label for="fbyStatus">Status</label>
+                    <select name="fbyStatus" id="fbyStatus">
+                        <option value="">All</option>
+                        <option value="Completed">Completed</option>
+                        <option value="In Process">In Process</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Overdued">Overdued</option>
+                    </select>
+                </div>
+            </form>
+            <div class="card">
+                <div class="table-cont">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sr.</th>
+                                <th>Title</th>
+                                <th>Asignesd To</th>
+                                <th>Priority</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="taskTBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="pagesBtnsCont" class="pages-btns">
+        </div>
+    </main>
+    <!-- modals -->
+    <div id="modals-placeholder"></div>
+
+    <script src="../js/navbar.js" defer></script>
+    <script src="../js/modals.js"></script>
+    <script>
+        let tablebody = document.getElementById('taskTBody');
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+        const filterSarch = () => {
+            const employeeName = document.getElementById('fbyEmpName').value.trim();
+            const fbypriority = document.getElementById('fbyPriority').value.trim();
+            const fbystatus = document.getElementById('fbyStatus').value.trim();
+
+            const filterdTasks = tasks.filter(task => {
+
+                const employeeMatch =
+                    employeeName === '' ||
+                    task.asginedto.match(new RegExp(`\\b${employeeName}\\w*`, 'gi')
+                    );
+
+                const priorityMatch =
+                    fbypriority === '' ||
+                    task.priority.toLowerCase() === fbypriority.toLowerCase();
+
+                const statusMatch =
+                    fbystatus === '' ||
+                    task.status.toLowerCase() === fbystatus.toLowerCase();
+
+                return employeeMatch && priorityMatch && statusMatch;
+            });
+
+            document.getElementById('pagesBtnsCont').style.display = 'none';
+            let filterHTml = '';
+            let count = 0;
+            filterdTasks.forEach(task => {
+                if (task.priority.toLowerCase() == 'high' && task.status.toLowerCase() == 'overdued') {
+                    filterHTml += `
+                    <tr class="highfy">
+                        <th>${++count}</th>
+                        <td>${task.tasktitle}</td>
+                        <td>${task.asginedto}</td>
+                        <td><span class="${task.priority.toLowerCase()}">${task.priority}</span></td>
+                        <td>${task.due_date}</td>
+                        <td>${task.status}</td>
+                    </tr>
+                `
+                } else {
+
+                    filterHTml += `
+                        <tr class="${task.priority.toLowerCase()}" >
+                            <th>${++count}</th>
+                            <td>${task.tasktitle}</td>
+                            <td>${task.asginedto}</td>
+                            <td><span class="${task.priority.toLowerCase()}">${task.priority}</span></td>
+                            <td>${task.due_date}</td>
+                            <td>${task.status}</td>
+                        </tr>
+                    `
+                }
+            })
+
+            tablebody.innerHTML = filterHTml;
+        };
+
+
+        document.getElementById('fbyEmpName').addEventListener('input', filterSarch);
+        document.getElementById('fbyPriority').addEventListener('input', filterSarch);
+        document.getElementById('fbyStatus').addEventListener('input', filterSarch);
+
+
+        const getTasks = (form, to, event) => {
+
+            // filters add
+
+            let pagesBtnsCont = document.querySelectorAll('#pagesBtnsCont button');
+            pagesBtnsCont.forEach(button => {
+                if (button !== event.target) {
+                    button.classList.remove('active');
+                } else {
+                    button.classList.add('active');
+                }
+            })
+
+            let curentTasks = tasks.slice(form, to);
+
+            tablebody.innerHTML = '';
+            let html = '';
+            let count = form;
+            curentTasks.forEach(task => {
+                if (task.priority.toLowerCase() == 'high' && task.status.toLowerCase() == 'overdued') {
+                    html += `
+                    <tr class="highfy">
+                        <th>${++count}</th>
+                        <td>${task.tasktitle}</td>
+                        <td>${task.asginedto}</td>
+                        <td><span class="${task.priority.toLowerCase()}">${task.priority}</span></td>
+                        <td>${task.due_date}</td>
+                        <td>${task.status}</td>
+                    </tr>
+                `
+                } else {
+
+                    html += `
+                        <tr class="${task.priority.toLowerCase()}" >
+                            <th>${++count}</th>
+                            <td>${task.tasktitle}</td>
+                            <td>${task.asginedto}</td>
+                            <td><span class="${task.priority.toLowerCase()}">${task.priority}</span></td>
+                            <td>${task.due_date}</td>
+                            <td>${task.status}</td>
+                        </tr>
+                    `
+                }
+            })
+
+            tablebody.innerHTML = html;
+        }
+
+    </script>
+    <script type="module" src="../js/tasks.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+.card {
+    background-color: #FFFFFF;
+    border: 1px solid #80808030;
+    padding: 20px;
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card.projecsChart {
+    height: 350px;
+    margin-bottom: 20px;
+}
+
+.card.polarAreaChart {
+    max-width: 500px;
+    width: 100%;
+}
+
+.cards-cont {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    width: 100%;
+    gap: 20px;
+}
+
+
+.projectsDets {
+    max-width: 100%;
+    background-color: transparent;
+    border-color: transparent;
+    padding: 20px 0;
+}
+
+.projectsDets h2 {
+    margin-bottom: 20px;
+}
+
+.card.projectsDets .wrap-cont {
+    width: 100%;
+}
+
+.card.projectsDets .items-cont {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+
+}
+
+.card.projectsDets .items-cont .item {
+    background-color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px;
+}
+
+.card.projectsDets .items-cont .item .head span {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 5px 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.card.projectsDets .items-cont .item h3 {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: var(--font1);
+    margin-bottom: 20px;
+}
+
+.card.projectsDets .items-cont .item .tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: #434343;
+}
+
+.card.projectsDets .items-cont .item .middle {
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+    margin-bottom: 10px;
+}
+
+.card.projectsDets .items-cont .item .middle .dets {
+    font-size: 14px;
+}
+
+.card.projectsDets .items-cont .item .bottom .tag-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* inner percentage */
+
+.card .pro-cont {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.card .pro-cont .pro-out {
+    position: relative;
+    height: 20px;
+    background-color: #80808030;
+    width: 100%;
+    border-radius: 100px;
+}
+
+.card .pro-cont .pro-out .pro-in {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    background-color: #000000;
+    background: linear-gradient(to right, #000000, #434343);
+    border-radius: 100px;
+}
+
+.card .pro-cont .pro-out span {
+    font-weight: 700;
+    font-size: 14px;
+    color: #FFFFFF;
+    mix-blend-mode: difference;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+
+.cards-cont .ppwrap .card {
+    height: 100%;
+}
+
+#projectProgressChart {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media screen and (max-width: 1440px) {
+    .card.projectsDets .items-cont {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cards-cont {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media screen and (max-width: 768px) {
+    .card.projectsDets .items-cont {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-cont {
+        grid-template-columns: 1fr ;
+    }
+
+}

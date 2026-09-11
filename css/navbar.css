@@ -1,0 +1,106 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #80808030;
+    z-index: 10000;
+}
+
+nav .nav-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    padding: 0 20px;
+}
+
+nav .nav-cont .logo-cont {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .nav-cont .logo-cont .logo-img {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+
+nav .nav-cont .logo-cont .logo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav .nav-cont .logo-cont .logo-name {
+    font-size: 24px;
+    font-weight: 900;
+    font-family: var(--font2);
+}
+
+nav .nav-cont .other-dets {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav .nav-cont .other-dets .item {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+nav .nav-cont .other-dets .item img {
+    width: 30px;
+    height: 30px;
+}
+
+nav .nav-cont .other-dets .item:hover {
+    background-color: #80808030;
+}
+
+nav .nav-cont .other-dets .item .drop-down {
+    position: absolute;
+    top: 50px;
+    box-shadow: 1px 1px 10px #80808030;
+    background-color: #fff;
+    border: 1px solid #80808030;
+    min-width: 100%;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+nav .nav-cont .other-dets .item:focus .drop-down,
+nav .nav-cont .other-dets .item:hover .drop-down {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+
+nav .nav-cont .other-dets .item .drop-down button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media screen and (max-width: 1040px) {
+
+    nav .nav-cont .logo-cont .logo-name {
+        display: none;
+    }
+}

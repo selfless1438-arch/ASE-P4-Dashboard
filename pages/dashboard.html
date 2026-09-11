@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbaord | ASE - Portal</title>
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <link rel="stylesheet" href="../css/modals.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+    <div id="navbar-placeholder"></div>
+    <main>
+        <div class="title">
+            <h1>Welcome Back Admin </h1>
+            <p class="title-desc">
+                Here what's going on with your team?
+            </p>
+        </div>
+        <div class="cards-cont">
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/project.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="projectsCount">20</h2>
+                    <p class="tagline">Projects</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/process.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="inprCount">20</h2>
+                    <p class="tagline">In Process Tasks</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/pending.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="pendCount">20</h2>
+                    <p class="tagline">Pending Tasks</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="img-cont">
+                    <img src="../assets/overdued.svg" alt="">
+                </div>
+                <div class="content">
+                    <h2 class="coutn" id="ovduCount">20</h2>
+                    <p class="tagline">Overdued Tasks</p>
+                </div>
+            </div>
+        </div>
+        <!-- REcent tasks -->
+        <div class="rec-tasks">
+            <div class="rec-tit"></div>
+            <h2>Recent Tasks</h2>
+            <div class="table-cont">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sr.</th>
+                            <th>Task Title</th>
+                            <th>Asigned To</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="RecentTasksBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- modals -->
+    <div id="modals-placeholder"></div>
+
+    <script src="../js/navbar.js" defer></script>
+    <script src="../js/modals.js"></script>
+    <script type="module" src="../js/dashboard.js "></script>
+</body>
+
+</html>

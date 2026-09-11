@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | ASE - Portal</title>
+    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/aside.css">
+    <link rel="stylesheet" href="../css/modals.css">
+    <link rel="stylesheet" href="../css/reports.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<div id="navbar-placeholder"></div>
+
+<main>
+
+    <div class="title">
+        <h1>Project Wise Tasks</h1>
+    </div>
+    <div class="card projecsChart">
+        <canvas id="projectChart"></canvas>
+    </div>
+    <div class="cards-cont">
+        <div>
+            <div class="card polarAreaChart">
+                <h2>Category Wise Stats</h2>
+                <canvas id="polarChart"></canvas>
+            </div>
+        </div>
+        <div class="ppwrap">
+            <div class="card ppchartcont">
+                <canvas id="projectProgressChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div >
+        <div class="card projectsDets">
+            <h2>Projects</h2>
+            <div class="wrap-cont">
+                <div class="items-cont" id="projectsDetsCont">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<div id="modals-placeholder"></div>
+
+<script src="../js/navbar.js" defer></script>
+<script src="../js/modals.js"></script>
+<script src="../js/reports.js"></script>
+</body>
+
+</html>

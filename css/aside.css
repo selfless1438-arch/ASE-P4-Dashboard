@@ -1,0 +1,127 @@
+aside {
+    position: fixed;
+    height: calc(100vh - 90px);
+    top: 90px;
+    width: 280px;
+    background-color: #fff;
+    z-index: 100;
+    border-right: 1px solid #80808030;
+}
+
+aside ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin-top: 30px;
+    border-bottom: 1px solid #80808030;
+}
+
+aside ul li {
+    position: relative;
+    width: 100%;
+}
+
+aside ul li a {
+    border-top: 1px solid #80808030;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+aside ul li a:hover {
+    background-color: #80808030;
+}
+
+aside ul li a.active {
+    background-color: #000000;
+    color: #fff;
+}
+
+aside ul li a.active img {
+    filter: invert(100%);
+}
+
+aside ul li a.active:hover {
+    background-color: #000000;
+}
+
+/* bottom */
+
+aside .bottom {
+    position: absolute;
+    bottom: 0;
+    background-color: #000000;
+    width: 100%;
+    left: 0;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+aside .bottom .profile-cont {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+aside .bottom .profile-cont img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+aside .bottom button { 
+    padding: 5px;
+    
+}
+aside .bottom button:hover {
+    background-color: #80808030;
+    border-radius: 5px;
+}
+aside .bottom button img {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    filter: invert(100%);
+}
+
+/* ----------- */
+main::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    position: relative;
+    height: calc(100vh - 90px);
+    top: 90px;
+    left: 280px;
+    width: calc(100vw - 280px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+
+@media screen and (max-width: 1040px) {
+    aside {
+        width: 58px;
+        overflow: hidden;
+    }
+    main{
+         left: 58px;
+    width: calc(100vw - 58px);
+    padding: 10px;
+    }
+    aside img {
+        transform: translateX(-5px);
+    }
+}
