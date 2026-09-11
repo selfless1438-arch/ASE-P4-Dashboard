@@ -25,3 +25,10 @@ A task management application created as practice project as Intern At ALLIED SO
 - `tests/` - Test files
 - `screenshots/` - Project screenshots
 
+///////////////////////////////
+Email = admin@mail.com
+password = 123
+///////////////////////////////
+
+## Live Visit
+[Visit Portal](https://selfless1438-arch.github.io/ASE-P4-Dashboard/pages/login.html)
