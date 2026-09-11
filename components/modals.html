@@ -1,0 +1,68 @@
+<div class="modal" id="createTaskModal">
+    <div class="modal-dialogue">
+        <div class="closeModalBtn" onclick="closeModal('createTaskModal')">
+            <p>+</p>
+        </div>
+        <div class="card">
+            <div class="card-head">
+                <h3><span> + </span>Create Task</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" id="addNewTaskForm" onsubmit="addNewTask(event)">
+                    <div class="input-cont">
+                        <label for="task_title">Title</label>
+                        <input autocomplete="off" type="text" name="task_title" id="task_title">
+                    </div>
+                    <div class="input-cont">
+                        <label for="projectTask">Project</label>
+                        <input autocomplete="off" type="text" name="projectTask" id="projectTask">
+                        <input autocomplete="off" type="hidden" name="projectTaskId" id="projectTaskId">
+                        <div class="dropDown" id="projectDrop">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="input-cont">
+                        <label for="asigned_to">Assigne To</label>
+                        <input autocomplete="off" type="text" name="asigned_to" id="asigned_to">
+                        <input autocomplete="off" type="hidden" id="taskEmployeeId">
+                        <div class="dropDown" id="emloyeesDrop">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="input-cont">
+                        <label for="priority">Priority</label>
+                        <select name="priority" id="priority">
+                            <option value="High">High</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+                    <div class="input-cont">
+                        <label for="start_date">Start Date</label>
+                        <input autocomplete="off" type="date" name="start_date" id="start_date">
+                    </div>
+                    <div class="input-cont">
+                        <label for="due_date">Due Date</label>
+                        <input autocomplete="off" type="date" name="due_date" id="due_date">
+                    </div>
+                    <div class="input-cont">
+                        <label for="status">Status</label>
+                        <select name="status" id="status">
+                            <option value="Pending">Pending</option>
+                            <option value="Inprocess">Inprocess</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="btns-cont">
+                        <button type="reset">Reset</button>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
